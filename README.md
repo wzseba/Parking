@@ -54,28 +54,28 @@ Este método hace que el coche con la matrícula indicada salga del parking, liber
 
 **public int getPlazasTotales()**
 
-Este método devuelve las plazas totales del parking. 
+* Este método devuelve las plazas totales del parking. 
 
 **public int getPlazasOcupadas()**
 
-Este método devuelve las plazas ocupadas del parking. 
+* Este método devuelve las plazas ocupadas del parking. 
 
 **public int getPlazasLibres()**
 
-Este método devuelve las plazas libres del parking. 
+* Este método devuelve las plazas libres del parking. 
 
 **public String toString()**
 
-La sobrecarga de este método devolverá una cadena que contendrá el nombre del parking y un listado de cada plaza y la matrícula que la ocupa. Por ejemplo:
+* La sobrecarga de este método devolverá una cadena que contendrá el nombre del parking y un listado de cada plaza y la matrícula que la ocupa. Por ejemplo:
 
 | Parking Avenida |
 | -- |
 
 | Plaza 0: (vacía) | 
  
-| Plaza 1: 3322AB |
+| Plaza 1: 3322AB  |
  
-| Plaza 2: 5342HW | 
+| Plaza 2: 5342HW  | 
  
 | Plaza 3: (vacía) |
 
