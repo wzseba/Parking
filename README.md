@@ -68,16 +68,11 @@ Este método hace que el coche con la matrícula indicada salga del parking, lib
 
 * La sobrecarga de este método devolverá una cadena que contendrá el nombre del parking y un listado de cada plaza y la matrícula que la ocupa. Por ejemplo:
 
-| Parking Avenida |
+| **Parking Avenida** |
 | -- |
-
-| Plaza 0: (vacía) | 
- 
+| Plaza 0: (vacía) |
 | Plaza 1: 3322AB  |
- 
-| Plaza 2: 5342HW  | 
- 
-| Plaza 3: (vacía) |
+| Plaza 2: 5342HW  |
 
 **Clase principal**
 
