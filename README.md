@@ -6,13 +6,13 @@ Se pide realizar una aplicaciÃ³n sencilla que permita controlar la ocupaciÃ³
 
 Para ello, se necesitarÃ¡ una clase Parking con las caracterÃ­sticas que se indican a continuaciÃ³n.
 
-Todo el control de errores se harÃ¡ lanzando y capturando Excepciones. 
+Todo el control de errores se harÃ¡ lanzando y capturando Excepciones.
 
 ## Clase Parking
 
 **Atributo matrÃ­culas**
 
-La clase Parking tendrÃ¡ como atributo un ArrayList de String llamado **matrÃ­culas**. 
+La clase Parking tendrÃ¡ como atributo un ArrayList de String llamado **matrÃ­culas**.
 
 Este ArrayList representarÃ¡ las distintas plazas del parking, y contendrÃ¡ las matrÃ­culas de los coches aparcados en cada plaza.
 
@@ -54,27 +54,27 @@ Este mÃ©todo hace que el coche con la matrÃ­cula indicada salga del parking,
 
 **public int getPlazasTotales()**
 
-* Este mÃ©todo devuelve las plazas totales del parking. 
+- Este mÃ©todo devuelve las plazas totales del parking.
 
 **public int getPlazasOcupadas()**
 
-* Este mÃ©todo devuelve las plazas ocupadas del parking. 
+- Este mÃ©todo devuelve las plazas ocupadas del parking.
 
 **public int getPlazasLibres()**
 
-* Este mÃ©todo devuelve las plazas libres del parking. 
+- Este mÃ©todo devuelve las plazas libres del parking.
 
 **public String toString()**
 
-* La sobrecarga de este mÃ©todo devolverÃ¡ una cadena que contendrÃ¡ el nombre del parking y un listado de cada plaza y la matrÃ­cula que la ocupa. Por ejemplo:
+- La sobrecarga de este mÃ©todo devolverÃ¡ una cadena que contendrÃ¡ el nombre del parking y un listado de cada plaza y la matrÃ­cula que la ocupa. Por ejemplo:
 
 | **Parking Avenida** |
-| -- |
-| Plaza 0: (vacÃ­a) |
-| Plaza 1: 3322AB  |
-| Plaza 2: 5342HW  |
+| ------------------- |
+| Plaza 0: (vacÃ­a)   |
+| Plaza 1: 3322AB     |
+| Plaza 2: 5342HW     |
 
-**Clase principal**
+## Clase principal
 
 En la clase principal realice un programa de prueba que haga lo siguiente: Crear un objeto Parking:
 
