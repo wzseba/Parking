@@ -22,4 +22,7 @@ public class Parking {
 		return nombreParking;
 	}
 
+	public void entrada(String matricula, int plaza) {
+
+	}
 }
