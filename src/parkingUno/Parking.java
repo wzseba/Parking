@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import excepciones.MatriculaIncorrectaException;
+import excepciones.MatriculaNoExisteException;
 import excepciones.MatriculaRepException;
 import excepciones.PlazaOcuException;
 
@@ -40,5 +41,20 @@ public class Parking {
 			throw new MatriculaRepException("Matricula repetida");
 		}
 		matriculas.add(plaza, matricula);
+	}
+
+	public int salida(String matricula) throws MatriculaNoExisteException {
+		if (!matriculas.contains(matricula)) {
+			throw new MatriculaNoExisteException("Matricula no existe");
+		}
+
+		int plaza = matriculas.indexOf(matricula);
+		matriculas.set(plaza, null);
+
+		return plaza;
+	}
+
+	public int getPlazasTotales() {
+		return matriculas.size();
 	}
 }
