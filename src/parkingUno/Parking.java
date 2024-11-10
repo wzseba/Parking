@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import excepciones.FueraRangoException;
-import excepciones.MatriculaIncorrectaException;
-import excepciones.MatriculaNoExisteException;
-import excepciones.MatriculaRepException;
-import excepciones.PlazaOcuException;
+import excepciones.ParkingException;
 
 public class Parking {
 
@@ -35,29 +31,28 @@ public class Parking {
 		this.plazasOcupadas = po;
 	}
 
-	public void entrada(String matricula, int plaza)
-			throws MatriculaIncorrectaException, PlazaOcuException, MatriculaRepException, FueraRangoException {
+	public void entrada(String matricula, int plaza) throws ParkingException {
 		// Verifica si un objeto es null antes de usarlo
 
 		if (matricula == null || matricula.length() < 4) {
-			throw new MatriculaIncorrectaException("Matricula incorrecta");
+			throw new ParkingException("Matricula incorrecta", matricula);
 		}
 		if (plaza < 0 || plaza >= matriculas.size()) {
-			throw new FueraRangoException("fuera de rango");
+			throw new ParkingException("fuera de rango", matricula);
 		}
 		if (matriculas.get(plaza) != null) {
-			throw new PlazaOcuException("Plaza ocupada");
+			throw new ParkingException("Plaza ocupada", matricula);
 		}
 		if (matriculas.contains(matricula)) {
-			throw new MatriculaRepException("Matricula repetida");
+			throw new ParkingException("Matricula repetida", matricula);
 		}
 		matriculas.add(plaza, matricula);
 		setPlazasOcupadas(getPlazasOcupadas() + 1);
 	}
 
-	public int salida(String matricula) throws MatriculaNoExisteException {
+	public int salida(String matricula) throws ParkingException {
 		if (!matriculas.contains(matricula)) {
-			throw new MatriculaNoExisteException("Matricula no existe");
+			throw new ParkingException("Matricula no existe", matricula);
 		}
 
 		int plaza = matriculas.indexOf(matricula);
