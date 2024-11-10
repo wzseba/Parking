@@ -1,77 +1,83 @@
 package parkingUno;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import excepciones.FueraRangoException;
-import excepciones.MatriculaIncorrectaException;
-import excepciones.MatriculaNoExisteException;
-import excepciones.MatriculaRepException;
-import excepciones.PlazaOcuException;
+import excepciones.ParkingException;
 
 public class Principal {
 
 	public static void main(String[] args) {
-		Parking parking = new Parking(10, "park");
+		Parking parking = new Parking(10, "Parking Center");
 		Scanner input = new Scanner(System.in);
-		boolean bandera = false;
 
-		while (!bandera) {
+		while (true) {
+
 			System.out.println("1- Entrada de coche");
 			System.out.println("2- Salida de coche");
 			System.out.println("3- Mostrar parking");
 			System.out.println("4- Salir del parking");
-			int opcion = input.nextInt();
 
-			switch (opcion) {
-			case 1: {
-				System.out.print("Introduzca la matrícula del coche: ");
-				String matricula = input.next();
-				System.out.print("Introduzca el numero de plaza : ");
-				int plaza = input.nextInt();
-				System.out.println("----------------------");
-				try {
+			try {
+				int opcion = input.nextInt();
+				input.nextLine(); // Limpiar salto de linea
 
-					parking.entrada(matricula, plaza);
-					System.out.println("Plazas totales: " + parking.getPlazasTotales());
-					System.out.println("Plazas ocupadas: " + parking.getPlazasOcupadas());
-					System.out.println("Plazas libres: " + parking.getPlazasLibres());
+				switch (opcion) {
+				case 1: {
+					System.out.print("Introduzca la matrícula del coche: ");
+					String matricula = input.next();
+					System.out.print("Introduzca el numero de plaza : ");
+					int plaza = input.nextInt();
 					System.out.println("----------------------");
-				} catch (MatriculaIncorrectaException | PlazaOcuException | MatriculaRepException
-						| FueraRangoException e) {
-					System.err.println(e.getMessage());
+					try {
+						parking.entrada(matricula, plaza);
+						System.out.println("Plazas totales: " + parking.getPlazasTotales());
+						System.out.println("Plazas ocupadas: " + parking.getPlazasOcupadas());
+						System.out.println("Plazas libres: " + parking.getPlazasLibres());
+						System.out.println("----------------------");
+					} catch (ParkingException e) {
+						System.err.println(e.getMensaje() + "matricula: " + e.getMatricula());
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+					}
+					break;
 				}
-				break;
-			}
-			case 2: {
-				System.out.println("introduzca la matrícula del coche que sale");
-				String matricula = input.next();
-				System.out.println("----------------------");
-				try {
-					parking.salida(matricula);
-					System.out.println("Plazas totales: " + parking.getPlazasTotales());
-					System.out.println("Plazas ocupadas: " + parking.getPlazasOcupadas());
-					System.out.println("Plazas libres: " + parking.getPlazasLibres());
+				case 2: {
+					System.out.println("introduzca la matrícula del coche que sale");
+					String matricula = input.next();
 					System.out.println("----------------------");
-				} catch (MatriculaNoExisteException e) {
-					System.err.println(e.getMessage());
+					try {
+						parking.salida(matricula);
+						System.out.println("Plazas totales: " + parking.getPlazasTotales());
+						System.out.println("Plazas ocupadas: " + parking.getPlazasOcupadas());
+						System.out.println("Plazas libres: " + parking.getPlazasLibres());
+						System.out.println("----------------------");
+					} catch (ParkingException e) {
+						System.err.println(e.getMensaje() + "matricula: " + e.getMatricula());
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+					}
+					break;
 				}
-				break;
-			}
-			case 3: {
-				System.out.println("----------------------");
-				System.out.print(parking.toString());
-				System.out.println("----------------------");
-				break;
-			}
-			case 4: {
-				bandera = true;
-				break;
-			}
-			default:
-				throw new IllegalArgumentException("Unexpected value");
+				case 3: {
+					System.out.println("----------------------");
+					System.out.print(parking.toString());
+					System.out.println("----------------------");
+					break;
+				}
+				case 4: {
+					System.out.println("Saliendo del programa...");
+					input.close();
+					return;
+				}
+				default:
+					System.out.println("valor incorrecto");
+					break;
+				}
+			} catch (InputMismatchException e) {
+				System.err.println("Entrada no valida, eliga entre 1 - 4");
+				input.nextLine(); // Limpiar la entrada incorrecta
 			}
 		}
-		input.close();
 	}
-
 }
